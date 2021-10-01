@@ -1,0 +1,44 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+.movie {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  overflow: hidden;
+}
+
+.movie-poster {
+  width: 183px;
+  object-fit: cover;
+  height: 281px;
+}
+
+.movie-overview-mob {
+  grid-row-start: 2;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+@media (max-width: 420px) {
+  .movie {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 60px auto;
+    grid-auto-rows: min-content;
+    padding-top: 6px;
+    padding-left: 10px;
+    padding-bottom: 46px;
+    column-gap: 13px;
+    row-gap: 10px;
+  }
+
+  .movie-poster {
+    width: 60px;
+    height: 91px;
+  }
+}
