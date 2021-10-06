@@ -30,11 +30,18 @@ const MovieInfo = ({ title, averageRating, releaseDate, genreIds, overview, rati
     return genresOfMovie;
   };
 
+  const sizeTitle = (ttl) => {
+    if (ttl.length > 25) {
+      return 'large-title';
+    }
+    return '';
+  };
+
   return (
     <GenresConsumer>
       {(getGenres) => (
         <div className="movie-info">
-          <h1 className="movie-title">{title}</h1>
+          <h1 className={`movie-title ${sizeTitle(title)}`}>{title}</h1>
           <div className={`movie-rating ${colorClass}`}>
             <p>{averageRating}</p>
           </div>
@@ -45,7 +52,7 @@ const MovieInfo = ({ title, averageRating, releaseDate, genreIds, overview, rati
             </ul>
           ) : null}
 
-          {window.innerWidth > 420 ? <p className="movie-overview">{truncStr(overview)}</p> : null}
+          {window.innerWidth > 420 ? <p className="movie-overview">{truncStr(overview, title, genreIds)}</p> : null}
           <Rate
             count={10}
             allowHalf

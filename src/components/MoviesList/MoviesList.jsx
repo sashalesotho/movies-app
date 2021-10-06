@@ -10,6 +10,7 @@ const MoviesList = ({ movies, isLoading, sessionId, isSearch, ratedMovies }) => 
     if (!movies) {
       return null;
     }
+
     const moviesCards = films.map((item) => (
       <li key={item.id} className="movies-list-item">
         <Movie

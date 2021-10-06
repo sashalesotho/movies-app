@@ -121,6 +121,7 @@ export default class App extends Component {
     if (notFound) {
       return <p className="not-found">MOVIE NOT FOUND</p>;
     }
+
     return (
       <MoviesList
         movies={movies}

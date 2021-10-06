@@ -5,11 +5,16 @@ import PropTypes from 'prop-types';
 import MovieInfo from '../MovieInfo/MovieInfo';
 
 const Movie = ({ title, poster, releaseDate, id, averageRating, overview, sessionId, rating, genreIds }) => {
-  const truncStr = (str) => {
+  const truncStr = (str, ttl, tags) => {
     if (typeof str === 'undefined') {
       return '';
     }
-    const idx = str.indexOf(' ', 100);
+    let idx;
+    if (ttl.length > 18 && tags.length >= 3) {
+      idx = str.indexOf(' ', 20);
+    } else {
+      idx = str.indexOf(' ', 75);
+    }
     return str.slice(0, idx).concat('…');
   };
 
@@ -35,7 +40,7 @@ const Movie = ({ title, poster, releaseDate, id, averageRating, overview, sessio
         truncStr={truncStr}
       />
 
-      {window.innerWidth <= 420 ? <p className="movie-overview-mob">{truncStr(overview)}</p> : null}
+      {window.innerWidth <= 420 ? <p className="movie-overview-mob">{truncStr(overview, title, genreIds)}</p> : null}
     </div>
   );
 };

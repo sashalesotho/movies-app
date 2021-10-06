@@ -18,6 +18,10 @@
   line-height: 28px;
 }
 
+.large-title {
+  font-size: 18px;
+}
+
 .movie-rating {
   display: flex;
   align-items: center;
@@ -54,6 +58,7 @@
   color: #827e7e;
   margin-top: 0px;
   margin-bottom: 9px;
+  font-size: 11px;
 }
 
 .movie-genres-list {

@@ -34,7 +34,9 @@ export default class Search extends Component {
   }
 
   changeSearch = (event) => {
-    this.setState({ value: event.target.value });
+    if (event.target.value.trim().length) {
+      this.setState({ value: event.target.value });
+    }
   };
 
   render() {
