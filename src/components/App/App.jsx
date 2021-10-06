@@ -136,10 +136,6 @@ export default class App extends Component {
   render() {
     const { sessionId, movies, isLoading, error, totalPages, currentPage, isSearch, genres, searchString } = this.state;
 
-    if (error) {
-      return <Alert message={`ERROR ${error}`} type="error" />;
-    }
-
     return (
       <GenresProvider value={genres}>
         <div className="app">
@@ -185,7 +181,8 @@ export default class App extends Component {
                 setSearchString={this.setSearchString}
               />
             ) : null}
-            {this.content()}
+            {!window.navigator.onLine ? <Alert type="warning" message="INTERNET DISCONNECTED" /> : null}
+            {error ? <Alert type="error" message={`ERROR ${error}`} /> : this.content()}
             {!isLoading && movies && isSearch ? (
               <Pagination
                 className="pagination"
